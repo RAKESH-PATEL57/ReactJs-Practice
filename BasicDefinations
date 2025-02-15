@@ -19,3 +19,15 @@ State in React refers to a built-in object that holds data or information about 
 👉Global State
 👉Server State
 👉Url Stat
+
+👉Local State:-
+State that is manages within a single component.
+Use Cases:-
+📖Managing UI element
+📖Temporary Data Specific to a component
+
+👉Global State:-
+State thai is shared across multiple components
+Use Cases:-
+📖Managing authenticated user data
+📖Managing global application themes or language preferences.
