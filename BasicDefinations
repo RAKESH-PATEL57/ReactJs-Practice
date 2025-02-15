@@ -10,3 +10,12 @@ React, the popular JavaScript library, offers several exciting reasons for devel
 👉Vast Community Support: React benefits from a large community, providing enough resources, tutorials, and troubleshooting help.
 👉Excellent Performance: React’s efficient Virtual DOM ensures fast rendering and high performance for web applications.
 👉Easy Testing: React’s structure and tools make testing simpler, improving code reliability and maintainability.
+
+2:- What is state :- 
+State in React refers to a built-in object that holds data or information about a component. It determines how a component renders and behaves. When the state changes, React re-renders the component to reflect the updated data.
+
+🌺Types of States in ReactJs
+👉Local State
+👉Global State
+👉Server State
+👉Url Stat
