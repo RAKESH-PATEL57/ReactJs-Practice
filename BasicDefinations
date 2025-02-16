@@ -31,3 +31,29 @@ State thai is shared across multiple components
 Use Cases:-
 📖Managing authenticated user data
 📖Managing global application themes or language preferences.
+👉Server State:-
+State that comes from an external server (API) and needs to be integrated with UI state.
+Use Cases:-
+📖Fetching and managing API data
+📖Handling loading states, erros, and caching.
+
+👉Url State:-
+State stored in the URL, such as query parameters, pathname, and hash.
+Use Cases:-
+📖Handling navigation and routing
+📖Maintaining state that persists when refreshing or sharing the URL
+Code Example:-
+
+import { useLocation, useSearchParams } from 'react-router-dom';
+
+const Example = () => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
+  return (
+    <div>
+      <p>Current Path: {location.pathname}</p>
+      <p>Query Param Value: {searchParams.get("example")}</p>
+    </div>
+  );
+};
