@@ -57,3 +57,14 @@ const Example = () => {
     </div>
   );
 };
+
+3:- 👨‍💻Props in React
+Props (short for Properties) are used to pass data from a parent component to a child component. Unlike state, props are immutable, meaning they cannot be modified within the receiving component.
+
+👉Props allow components to be reusable and dynamic.
+Props are read-only and cannot be changed by the child component.
+👉They help in data communication between components.
+Passed as attributes in JSX elements.
+
+⭐What is Prop Drilling and How to Avoid it?
+Prop drilling in React refers to the process of passing data (props) from a parent component down to deeply nested child components through multiple intermediate components, even if those intermediate components do not directly use the data. This can lead to unnecessary complexity and reduced maintainability.
