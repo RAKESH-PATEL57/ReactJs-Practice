@@ -18,7 +18,7 @@ State in React refers to a built-in object that holds data or information about 
 👉Local State
 👉Global State
 👉Server State
-👉Url Stat
+👉Url State
 
 👉Local State:-
 State that is manages within a single component.
@@ -31,6 +31,7 @@ State thai is shared across multiple components
 Use Cases:-
 📖Managing authenticated user data
 📖Managing global application themes or language preferences.
+
 👉Server State:-
 State that comes from an external server (API) and needs to be integrated with UI state.
 Use Cases:-
@@ -58,7 +59,8 @@ const Example = () => {
   );
 };
 
-3:- 👨‍💻Props in React
+
+👨‍💻Props in React
 Props (short for Properties) are used to pass data from a parent component to a child component. Unlike state, props are immutable, meaning they cannot be modified within the receiving component.
 
 👉Props allow components to be reusable and dynamic.
@@ -68,3 +70,101 @@ Passed as attributes in JSX elements.
 
 ⭐What is Prop Drilling and How to Avoid it?
 Prop drilling in React refers to the process of passing data (props) from a parent component down to deeply nested child components through multiple intermediate components, even if those intermediate components do not directly use the data. This can lead to unnecessary complexity and reduced maintainability.
+
+code example:-
+import React from "react";
+
+// Parent component that holds the message and passes it down
+function Parent() {
+    const message = "Hello from Parent";
+    return (
+        <div>
+            <Child message={message} />
+        </div>
+    );
+}
+
+function Child({ message }) {
+    return (
+        <div>
+            <Grandchild message={message} />
+        </div>
+    );
+}
+
+function Grandchild({ message }) {
+    return (
+        <div>
+            <p>Message: {message}</p>
+        </div>
+    );
+}
+
+export default function App() {
+    return (
+        <div>
+            <Parent />
+        </div>
+    );
+}
+
+
+
+👨‍💻Why We Shouldn’t Use Prop Drilling?
+👉Code Maintainability: Passing props through multiple components makes the code harder to read and update.
+👉Component Coupling: Components become tightly coupled to their parent components, making them less reusable.
+👉Scalability Issues: As the app grows, prop drilling can lead to a cluttered component hierarchy.
+👉Increased Boilerplate: Developers must manually pass props at each level, leading to unnecessary duplication of code.
+
+👨‍💻How to Avoid Prop Drilling?
+👉 Using Context API:-
+The React Context API provides a way to share values (like state, functions, or constants) between components without explicitly passing props.
+
+code example:-
+import React, { createContext, useContext } from 'react';
+const UserContext = createContext();
+const App = () => {
+    const userName = 'geeksforgeeks';
+    return (
+        <UserContext.Provider value={userName}>
+            <Parent />
+        </UserContext.Provider>
+    );
+};
+const Parent = () => {
+    return <Child />;
+};
+const Child = () => {
+    return <GrandChild />;
+};
+const GrandChild = () => {
+    const userName = useContext(UserContext); // Access context value
+    return <p>Hello, {userName}!</p>;
+};
+export default App;
+
+👉Using Custom Hooks:-
+Custom hooks are reusable functions in React that encapsulate stateful logic, starting with use (e.g., useFetch). They improve code reusability, keep components clean, and allow sharing logic across components.
+
+code example:-
+import React, { createContext, useContext } from "react";
+const UserContext = createContext();
+const useUser = () => { return useContext(UserContext); };
+const App = () => {
+    const userName = "GeeksforGeeks";
+
+    return (
+        <UserContext.Provider value={userName}>
+            <Component />
+        </UserContext.Provider>
+    );
+};
+const Component = () => {
+    return <Child />;
+};
+const Child = () => { return <Grand />; };
+const Grand = () => {
+    const userName = useUser();
+    return <p>Hello, {userName}!</p>;
+};
+export default App;
